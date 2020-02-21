@@ -1,8 +1,16 @@
 package ru.tinkoff.fintech.service.notification
 
-class CardNumberMaskerImpl: CardNumberMasker {
+import java.lang.Exception
+
+class CardNumberMaskerImpl : CardNumberMasker {
 
     override fun mask(cardNumber: String, maskChar: Char, start: Int, end: Int): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return when {
+            end < start -> throw Exception()
+            start == end -> cardNumber
+            else -> cardNumber.toCharArray()
+                .mapIndexed { index, c -> if (index in start until end) maskChar else c }
+                .joinToString("")
+        }
     }
 }
