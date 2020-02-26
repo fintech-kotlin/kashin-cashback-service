@@ -12,7 +12,7 @@ class NotificationMessageGeneratorImpl(
             |Спешим Вам сообщить, что на карту ${cardNumberMasker.mask(notificationMessageInfo.cardNumber)}
             |начислен cashback в размере ${notificationMessageInfo.cashback}
             |за категорию ${notificationMessageInfo.category}.
-            |Спасибо за покупку ${notificationMessageInfo.transactionDate}
-            |""".trimMargin()
+            |Спасибо за покупку ${notificationMessageInfo.transactionDate}"""
+            .trimMargin()
     }
 }
