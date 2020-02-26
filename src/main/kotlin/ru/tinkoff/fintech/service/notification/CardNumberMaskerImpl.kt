@@ -1,16 +1,13 @@
 package ru.tinkoff.fintech.service.notification
 
-import java.lang.Exception
-
 class CardNumberMaskerImpl : CardNumberMasker {
 
-    override fun mask(cardNumber: String, maskChar: Char, start: Int, end: Int): String {
-        return when {
-            end < start -> throw Exception()
+    override fun mask(cardNumber: String, maskChar: Char, start: Int, end: Int): String =
+        when {
+            end < start -> throw IllegalArgumentException()
             start == end -> cardNumber
-            else -> cardNumber.toCharArray()
+            else -> cardNumber
                 .mapIndexed { index, c -> if (index in start until end) maskChar else c }
                 .joinToString("")
         }
-    }
 }
